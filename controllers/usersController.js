@@ -3,17 +3,27 @@ const auth = require("../modules/auth");
 const User = require("../models/user");
 
 module.exports = {
-  signUp: async (req, res) => {
+  update: async (req, res) => {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(422).json({ errors: errors.array() });
       }
-      const user = await User.create(req.body);
+      const { firstName, lastName, email, gender } = req.body;
+      const user = await User.findOneAndUpdate(
+        { uid: req.body.uid },
+        {
+          firstName,
+          lastName,
+          email,
+          gender,
+        }
+      );
       res.json({
         success: true,
         user,
-        message: "User registered successfully",
+        message: "Profile created successfully",
+        isOnboardingDone: true
       });
     } catch (err) {
       console.log(err);
@@ -24,9 +34,31 @@ module.exports = {
     try {
       const user = await User.findOne({ uid: req.body.uid });
       if (!user) {
-        res.json({ message: "No user found, please sign up" });
+        const user = await User.create({
+          uid: req.body.uid,
+          phoneNumber: req.body.phoneNumber,
+        });
+        res.json({
+          success: true,
+          message: "User logged in successfully",
+          user,
+          isOnboardingDone: false,
+        });
+      } else if (user && !user.firstName) {
+        res.json({
+          success: true,
+          message: "User logged in successfully",
+          user,
+          isOnboardingDone: false,
+        });
+      } else {
+        res.json({
+          success: true,
+          user,
+          message: "User logged in successfully",
+          isOnboardingDone: true,
+        });
       }
-      res.json({ success: true, user, message: "User logged in successfully" });
     } catch (err) {
       res.status(400).json({ success: false, err });
     }
