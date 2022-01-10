@@ -1,12 +1,11 @@
 const { check } = require("express-validator");
 const User = require("../models/user");
 
-exports.usersSignup = () => {
+exports.validate = () => {
   return [
-    check("email").isEmail(),
+    check("email").isEmail().optional({ nullable: true }),
     check("firstName").notEmpty(),
     check("lastName").notEmpty(),
-    check("phoneNumber").notEmpty(),
     check("gender").notEmpty(),
   ];
 };
@@ -14,7 +13,7 @@ exports.usersSignup = () => {
 exports.checkIfUserExists = async (req, res, next) => {
   const user = await User.findOne({ uid: req.body.uid });
   if (user) {
-    res.json({ message: "User already exists" });
+    res.json({ message: "User already exists", exists: true });
   }
   next();
 };
