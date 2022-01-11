@@ -64,4 +64,23 @@ module.exports = {
       res.status(400).json({ success: false, err });
     }
   },
+  search: async (req, res) => {
+    try {
+      const searchParams = req.query.user;
+
+      const users = await User.find({
+        $or: [
+          { firstName: new RegExp(".*" + searchParams + ".*", "i") },
+          { lastName: new RegExp(".*" + searchParams + ".*", "i") },
+        ],
+      });
+      res.json({
+        success: true,
+        users,
+      });
+    } catch (err) {
+      console.log(err);
+      res.json({ success: false, err });
+    }
+  },
 };

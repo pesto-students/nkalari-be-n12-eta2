@@ -19,4 +19,5 @@ router.put(
   usersController.update
 );
 
+router.get("/search", auth.verifyToken, usersController.search);
 module.exports = router;
