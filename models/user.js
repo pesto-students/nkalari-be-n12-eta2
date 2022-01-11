@@ -5,7 +5,10 @@ var userSchema = new Schema(
   {
     email: {
       type: String,
+      default: null,
+      trim: true,
       unique: true,
+      sparse: true,
     },
     firstName: {
       type: String,
@@ -25,6 +28,9 @@ var userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
+    },
+    profileImageUrl: {
+      type: String,
     },
   },
   { timestamps: true }
