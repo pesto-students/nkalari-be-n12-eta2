@@ -3,10 +3,11 @@ const User = require("../models/user");
 
 exports.validate = () => {
   return [
-    check("email").isEmail().optional({ nullable: true }),
+    check("email").isEmail().optional({ checkFalsy: true }),
     check("firstName").notEmpty(),
     check("lastName").notEmpty(),
     check("gender").notEmpty(),
+    check("profileImageUrl").isURL().optional({ checkFalsy: true }),
   ];
 };
 

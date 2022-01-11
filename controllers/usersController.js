@@ -9,7 +9,7 @@ module.exports = {
       if (!errors.isEmpty()) {
         return res.status(422).json({ errors: errors.array() });
       }
-      const { firstName, lastName, email, gender } = req.body;
+      const { firstName, lastName, email, gender, profileImageUrl } = req.body;
       const user = await User.findOneAndUpdate(
         { uid: req.body.uid },
         {
@@ -17,13 +17,14 @@ module.exports = {
           lastName,
           email,
           gender,
+          profileImageUrl,
         }
       );
       res.json({
         success: true,
         user,
         message: "Profile created successfully",
-        isOnboardingDone: true
+        isOnboardingDone: true,
       });
     } catch (err) {
       console.log(err);
