@@ -7,7 +7,7 @@ exports.validate = () => {
     check("firstName").notEmpty(),
     check("lastName").notEmpty(),
     check("gender").notEmpty(),
-    check("profileImageUrl").isURL().optional({ checkFalsy: true }),
+    // check("profileImageUrl"),
   ];
 };
 

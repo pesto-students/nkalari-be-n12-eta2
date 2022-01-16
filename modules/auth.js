@@ -11,7 +11,7 @@ module.exports = {
         next();
       })
       .catch((error) => {
-        console.error(error, "i m error");
+        console.error(error, "invalid token error");
         res.json({ message: "invalid token", error });
       });
   },

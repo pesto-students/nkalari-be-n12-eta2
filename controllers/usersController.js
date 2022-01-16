@@ -9,16 +9,18 @@ module.exports = {
       if (!errors.isEmpty()) {
         return res.status(422).json({ errors: errors.array() });
       }
+
       const { firstName, lastName, email, gender, profileImageUrl } = req.body;
       const user = await User.findOneAndUpdate(
         { uid: req.body.uid },
         {
           firstName,
           lastName,
-          email,
           gender,
           profileImageUrl,
-        }
+          email,
+        },
+        { new: true }
       );
       res.json({
         success: true,
@@ -61,6 +63,7 @@ module.exports = {
         });
       }
     } catch (err) {
+      console.log(err, "error from login");
       res.status(400).json({ success: false, err });
     }
   },
@@ -77,6 +80,26 @@ module.exports = {
       res.json({
         success: true,
         users,
+      });
+    } catch (err) {
+      console.log(err);
+      res.json({ success: false, err });
+    }
+  },
+
+  getCurrentUser: async (req, res) => {
+    try {
+      const user = await User.findOne({ uid: req.body.uid });
+      if (user && !user.firstName) {
+        return res.json({
+          success: true,
+          user,
+          isOnboardingDone: false,
+        });
+      }
+      res.json({
+        success: true,
+        user,
       });
     } catch (err) {
       console.log(err);

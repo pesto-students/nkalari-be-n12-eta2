@@ -12,6 +12,8 @@ const router = express.Router();
 //   usersController.signUp
 // );
 router.post("/login", auth.verifyToken, usersController.login);
+router.get("/me", auth.verifyToken, usersController.getCurrentUser);
+
 router.put(
   "/",
   auth.verifyToken,
