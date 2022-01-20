@@ -40,7 +40,7 @@ app.use(express.static(path.join(__dirname, "public")));
 //connect to database
 mongoose.connect(
   process.env.MONGO_URI,
-  { useNewUrlParser: true, useUnifiedTopology: true },
+  { useNewUrlParser: true, useUnifiedTopology: true, family: 4},
   (err) => {
     console.log(err ? err : "db connected ");
   }
