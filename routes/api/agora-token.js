@@ -8,15 +8,15 @@ const express = require("express");
 const auth = require("../../modules/auth");
 const router = express.Router();
 
-router.post("/rtc", auth.verifyToken, (req, res) => {
-  const channelName = req.body.channelName;
+router.get("/rtc", auth.verifyToken, (req, res) => {
+  const channelName = req.query.channelName;
   if (!channelName) {
     return res
       .status(500)
       .json({ error: "channel is required", success: false });
   }
   let role = RtcRole.SUBSCRIBER;
-  if (req.body.role === "publisher") {
+  if (req.query.role === "publisher") {
     role = RtcRole.PUBLISHER;
   }
   let uid = 0;
@@ -38,8 +38,8 @@ router.post("/rtc", auth.verifyToken, (req, res) => {
   });
 });
 
-router.post("/rtm", auth.verifyToken, (req, res) => {
-  const channelName = req.body.channelName;
+router.get("/rtm", auth.verifyToken, (req, res) => {
+  const channelName = req.query.channelName;
   if (!channelName) {
     return res
       .status(500)
