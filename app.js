@@ -10,6 +10,7 @@ var cors = require("cors");
 
 var usersRouter = require("./routes/api/users");
 var transactionsRouter = require("./routes/api/transactions");
+var agoraRouter = require("./routes/api/agora-token");
 
 var app = express();
 
@@ -40,7 +41,7 @@ app.use(express.static(path.join(__dirname, "public")));
 //connect to database
 mongoose.connect(
   process.env.MONGO_URI,
-  { useNewUrlParser: true, useUnifiedTopology: true, family: 4},
+  { useNewUrlParser: true, useUnifiedTopology: true, family: 4 },
   (err) => {
     console.log(err ? err : "db connected ");
   }
@@ -49,6 +50,7 @@ mongoose.connect(
 // app.use("/api/", indexRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/transactions", transactionsRouter);
+app.use("/api/agora-token", agoraRouter);
 
 // The error handler must be before any other error middleware and after all controllers
 app.use(Sentry.Handlers.errorHandler());
