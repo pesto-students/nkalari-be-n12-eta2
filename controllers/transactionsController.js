@@ -51,14 +51,14 @@ module.exports = {
           },
         ],
         mode: 'payment',
-        success_url: `http://localhost:3001/login?success=true`,
+        success_url: `https://nkalari-8f0ee.web.app/wallet`,
         cancel_url: `http://localhost:3001/login??canceled=true`,
       });
       // res.json({
       //   success: true,
         
       // }); 
-      res.redirect(303, session.url);
+      res.json({url: session.url}) 
 
     }
     catch(err){
