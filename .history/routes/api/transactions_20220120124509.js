@@ -5,7 +5,5 @@ const router = express.Router();
 
 router.get("/", auth.verifyToken, transactionsController.getTransactions);
 router.post("/", auth.verifyToken, transactionsController.saveTransactions);
-router.post("/create-stripe-api", transactionsController.stripeCheckout);
-
 
 module.exports = router;

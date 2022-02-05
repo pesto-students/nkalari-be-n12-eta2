@@ -19,6 +19,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.4",
     "morgan": "~1.9.1",
-    "react-feather": "^2.0.9"
+    "react-feather": "^2.0.9",
+    "stripe": "^8.200.0"
   }
 }

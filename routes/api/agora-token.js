@@ -46,14 +46,15 @@ router.get("/rtm", auth.verifyToken, (req, res) => {
       .json({ error: "channel is required", success: false });
   }
   let role = RtmRole.Rtm_User;
+  console.log(req.body.uid, "userid", req.query.channelName);
   let userId = req.body.uid;
   let expireTime = 3600;
   const currentTime = Math.floor(Date.now() / 1000);
   const privligExpireTime = currentTime + expireTime;
   const token = RtmTokenBuilder.buildToken(
     process.env.AGORA_APP_ID,
-    userId,
     process.env.AGORA_APP_CERTIFICATE,
+    userId,
     role,
     privligExpireTime
   );

@@ -46,7 +46,7 @@ module.exports = {
         line_items: [
           {
             // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-            price: req.query.price_id,
+            price: 'price_1KMs2uSAIpv25iqwATWyJc3L',
             quantity: 1,
           },
         ],
