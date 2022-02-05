@@ -46,7 +46,7 @@ module.exports = {
         line_items: [
           {
             // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-            price: req.query.price_id,
+            price: '{{PRICE_ID}}',
             quantity: 1,
           },
         ],
@@ -54,12 +54,10 @@ module.exports = {
         success_url: `http://localhost:3001/login?success=true`,
         cancel_url: `http://localhost:3001/login??canceled=true`,
       });
-      // res.json({
-      //   success: true,
+      res.json({
+        success: true,
         
-      // }); 
-      res.redirect(303, session.url);
-
+      });  
     }
     catch(err){
       console.log(err);
