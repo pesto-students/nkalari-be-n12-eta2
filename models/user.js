@@ -32,6 +32,10 @@ var userSchema = new Schema(
     profileImageUrl: {
       type: String,
     },
+    wallet: {
+      type: Number,
+      default: 0,
+    },
   },
   { timestamps: true }
 );
