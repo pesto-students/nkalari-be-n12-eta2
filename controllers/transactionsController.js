@@ -70,7 +70,7 @@ module.exports = {
         ],
         mode: "payment",
         success_url: `https://nkalari-8f0ee.web.app/wallet`,
-        cancel_url: `https://nkalari-8f0ee.web.app/login??canceled=true`,
+        cancel_url: `https://nkalari-8f0ee.web.appw/login??canceled=true`,
         metadata: {
           userId: req.body.uid,
         },

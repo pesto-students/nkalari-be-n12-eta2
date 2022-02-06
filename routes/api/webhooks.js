@@ -14,7 +14,7 @@ const topUps = [
   { amount: 3060, diamonds: 10000 },
 ];
 
-const endpointSecret = "whsec_ENoqTj3k68k33Gny4Egs8TvXVUmH3z4o";
+const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
 router.post(
   "/",
