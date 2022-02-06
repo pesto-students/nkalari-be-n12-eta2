@@ -1,6 +1,8 @@
 const Transaction = require("../models/transaction");
-const stripe = require('stripe')('sk_test_51KMpLhSAIpv25iqwTwdQomvy8WjV9HdFzi5kQu4xnqY9DXaAg4kTVWNMfAMcuev6Ss1v5FjNVuoc21MFLcb7ccDF00c7jmYaSh');
-
+const User = require("../models/user");
+const stripe = require("stripe")(
+  "sk_test_51KMpLhSAIpv25iqwTwdQomvy8WjV9HdFzi5kQu4xnqY9DXaAg4kTVWNMfAMcuev6Ss1v5FjNVuoc21MFLcb7ccDF00c7jmYaSh"
+);
 
 module.exports = {
   saveTransactions: async (req, res) => {
@@ -12,10 +14,26 @@ module.exports = {
       //   giftName: "rose",
       //   sentTo: "id",
       // };
+      // const { type, diamond, status, giftName, sentBy } = req.body;
+      console.log(req.body, "ghost");
+      let wallet = req.body.diamonds;
+      const user = await User.findOneAndUpdate(
+        req.body.uid,
+        {
+          $inc: { wallet: wallet },
+        },
+        { new: true }
+      );
+      req.body.user = user.id;
+
+      console.log(user.wallet, "wallet", wallet, user);
+
       const transaction = await Transaction.create(req.body);
+
       res.json({
         success: true,
         message: "Transaction done successfully",
+        wallet: user.wallet,
       });
     } catch (err) {
       console.log(err);
@@ -41,7 +59,7 @@ module.exports = {
   },
 
   stripeCheckout: async (req, res) => {
-    try{
+    try {
       const session = await stripe.checkout.sessions.create({
         line_items: [
           {
@@ -50,24 +68,28 @@ module.exports = {
             quantity: 1,
           },
         ],
-        mode: 'payment',
+        mode: "payment",
         success_url: `https://nkalari-8f0ee.web.app/wallet`,
-        cancel_url: `http://localhost:3001/login??canceled=true`,
+        cancel_url: `https://nkalari-8f0ee.web.app/login??canceled=true`,
+        metadata: {
+          userId: req.body.uid,
+        },
+        payment_intent_data: {
+          metadata: {
+            userId: req.body.uid,
+          },
+        },
       });
       // res.json({
       //   success: true,
-        
-      // }); 
-      res.json({url: session.url}) 
 
-    }
-    catch(err){
+      // });
+      res.json({ url: session.url });
+    } catch (err) {
       console.log(err);
       res.status(400).json({ success: false, err });
     }
-   
 
-   
     // res.redirect(303, session.url);
   },
 };

@@ -11,6 +11,7 @@ var cors = require("cors");
 var usersRouter = require("./routes/api/users");
 var transactionsRouter = require("./routes/api/transactions");
 var agoraRouter = require("./routes/api/agora-token");
+var webhooksRouter = require("./routes/api/webhooks");
 
 var app = express();
 
@@ -33,6 +34,8 @@ app.use(Sentry.Handlers.requestHandler());
 app.use(Sentry.Handlers.tracingHandler());
 
 app.use(logger("dev"));
+app.use("/webhooks", webhooksRouter);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

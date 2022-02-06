@@ -15,6 +15,10 @@ var transactionSchema = new Schema(
       ref: "User",
     },
     giftName: { type: String },
+    sentBy: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
     sentTo: {
       type: Schema.Types.ObjectId,
       ref: "User",

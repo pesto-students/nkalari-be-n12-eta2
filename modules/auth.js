@@ -8,6 +8,7 @@ module.exports = {
       .then((decodedToken) => {
         const uid = decodedToken.uid;
         req.body.uid = uid;
+        console.log(uid, "uid", req.body);
         next();
       })
       .catch((error) => {
