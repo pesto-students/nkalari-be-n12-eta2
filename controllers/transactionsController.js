@@ -69,8 +69,8 @@ module.exports = {
           },
         ],
         mode: "payment",
-        success_url: `http://localhost:3000/wallet`,
-        cancel_url: `http://localhost:3001/login??canceled=true`,
+        success_url: `https://nkalari-8f0ee.web.app/wallet`,
+        cancel_url: `https://nkalari-8f0ee.web.app/login??canceled=true`,
         metadata: {
           userId: req.body.uid,
         },
