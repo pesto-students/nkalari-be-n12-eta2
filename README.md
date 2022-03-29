@@ -130,13 +130,13 @@ Following are the simple steps to run this project.
 
 3. Install NPM packages
    ```sh
-   cd emarat-fe && npm install
+   cd nkalari-be-n12-eta && npm install
    ```
 4. Run
    ```sh
-   npm start
+   nodemon
    ```
-5. Open http://localhost:3000 to view it in the browser
+5. Open http://localhost:5000 to view it in the browser
 
 
 ## Test Credentials
