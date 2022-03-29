@@ -3,11 +3,18 @@
     <img src="https://res.cloudinary.com/kalari/image/upload/v1644114710/kalari_logo_gfxuj9.png" alt="Logo" width="120" >
 </p>
 
-<h1 align="center">Kalari Frontend</h1>
-<h3 align="center">
-	<a href="https://nkalari-8f0ee.web.app/">Live URL</a>
-</h3>
+<h1 align="center">Kalari Backend</h1>
   
+
+
+<!-- ABOUT THE PROJECT -->
+
+## About The Project
+ 
+[![Product Name Screen Shot][product-screenshot]](https://nkalari-8f0ee.web.app/)
+
+A livestreaming platform for musicians, painters, comedians, dancers and actors to showcase their talents to the world. Whether you're a musician, painter, comedian, dancer or actor, Kalari is the place for you to share your work with the world. With a wide selection of livestreaming channels, you can find the perfect one for you, and start streaming your performances today.
+
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
@@ -15,8 +22,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#artefacts">Artefacts</a></li>
-        <li><a href="#backend-repo">Frontend Repo</a></li>
+        <li><a href="#frontend-repo">Frontend Repo</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -26,7 +32,6 @@
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
         <li><a href="#test-credentials">Test Credentials</a></li>
-        <li><a href="#other-available-scripts">Other Available Scripts</a></li>
         <li><a href="#tools-and-libraries">Tools And Libraries</a></li>
       </ul>
     </li>
@@ -34,48 +39,40 @@
   </ol>
 </details>
 
-<!-- ABOUT THE PROJECT -->
+## DEMO
 
-## About The Project
+<h3>
+	<a href="https://nkalari-8f0ee.web.app/">Live URL</a>
+</h3>
 
-[![Product Name Screen Shot][product-screenshot]](https://nkalari-8f0ee.web.app/)
+<br/>
 
-A livestreaming platform for musicians, painters, comedians, dancers and actors to showcase their talents to the world. Whether you're a musician, painter, comedian, dancer or actor, Kalari is the place for you to share your work with the world. With a wide selection of livestreaming channels, you can find the perfect one for you, and start streaming your performances today.
+Please Note:
 
-### Artefacts
+1. We recommend using this app in Google Chrome
+2. Use the app on Laptop/desktop only as of now.
 
-<a href="https://docs.google.com/document/d/1gusD8HeKRB9gGvAD0XKwNsuuJPW4fnxqiIsV9OKexUc/edit?usp=sharing">PRD</a>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://res.cloudinary.com/kalari/image/upload/v1644122408/HLD_sclowx.png">HLD</a>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://www.figma.com/file/8mfWR935k15JheCrD6oEzu/Hire-wand---Feature-Set?node-id=3%3A16">Wireframes</a>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://drive.google.com/file/d/1RWk71ZR6cVY-c2g_gaNI5I6DZNRQJPzE/view?usp=sharing">Coding Practices</a>
 
-### Backend Repo
+<br/>
+Test Credentials:
 
-[Frontend Repo](https://github.com/pesto-students/nkalari-be-n12-eta2)
+- For User
+ 	 - Phone Number: 9999999999
+ 	 - OTP: 111111
+- For Doctor 
+	  - Phone Number: 8888888888
+	  - OTP: 222222
+- For Admin
+	- Phone Number: 7777777777
+  	- OTP: 333333
+<br/>
 
-**Mission:**
 
-To empower amatuer performance artists to build their audience and community.
+### Frontend Repo
+[Repository](https://github.com/pesto-students/nkalari-fe-n12-eta2)
 
-**Vision:**
 
-To build a talent ecosystem for performing arts.
 
-**Goals:**
-
--  Simple solutions for the problems.
-- All solutions are in one place.
-- Bridge the communication gap within the society.
-
-**Features:**
-
-- Livestream video
-- Chat with members
-- Superchat
-- Give gifts to the artist
 
 ### Built With
 
@@ -110,23 +107,12 @@ To build a talent ecosystem for performing arts.
 
 Following are the simple steps to run this project.
 
-### Prerequisites
-
-- npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-- firebase
-  ```sh
-  npm install firebase -g
-  ```
 
 ### Installation
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/pesto-students/nkalari-fe-n12-eta2
+   git clone https://github.com/pesto-students/nkalari-be-n12-eta2
    ```
 2. Set environment variables
 
